@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="flex justify-center">
       <body
-        className={`${manrope.variable} antialiased m-4 my-6  bg-background max-w-[640px] `}
+        className={`${manrope.variable} antialiased m-4 my-6  bg-background max-w-[420px] `}
       >
         {children}
       </body>
