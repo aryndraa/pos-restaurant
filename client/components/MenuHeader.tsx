@@ -1,8 +1,5 @@
-import React from "react";
-import SearchModal from "./SearchModal";
 import CategoryNav from "./CategoryNav";
-import Link from "next/link";
-import { IoIosArrowBack } from "react-icons/io";
+import SearchModal from "./SearchModal";
 
 export default function MenuHeader() {
   return (

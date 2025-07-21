@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.variable} antialiased mx-4 my-2 bg-background`}
+        className={`${manrope.variable} antialiased m-4 my-6  bg-background`}
       >
         {children}
       </body>
