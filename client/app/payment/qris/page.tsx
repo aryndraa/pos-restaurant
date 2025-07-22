@@ -5,7 +5,7 @@ import PageTitle from "@/components/PageTitle";
 
 export default function Page() {
   return (
-    <div>
+    <section>
       <PageTitle content="Lets Complete Your Orders" />
       <div className="px-4 py-6 bg-white rounded-xl mb-3 mt-4">
         <div className="mb-6">
@@ -35,6 +35,6 @@ export default function Page() {
           Download QR
         </button>
       </div>
-    </div>
+    </section>
   );
 }
