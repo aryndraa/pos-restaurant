@@ -16,7 +16,7 @@ export default function Page() {
           behavior: "smooth",
           block: "center",
         });
-      }, 300); // delay untuk menunggu keyboard muncul
+      }, 300);
     };
 
     const input = inputRef.current;

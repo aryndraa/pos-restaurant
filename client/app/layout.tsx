@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import UserGuard from "@/components/UserGuard";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.variable} antialiased bg-background`}>
-        <main className="m-4 my-6 max-w-[420px]">{children}</main>
+        <main className="m-4 my-6 max-w-[420px]">
+          <UserGuard>{children}</UserGuard>
+        </main>
       </body>
     </html>
   );
