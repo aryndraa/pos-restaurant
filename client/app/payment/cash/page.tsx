@@ -13,7 +13,7 @@ export default function Page() {
             Almost There <br /> Just One More Step
           </h1>
           <p className="text-sm font-medium text-zinc-500">
-            Scan or download QR and enter bills amount{" "}
+            Show this QR code to the cashier and pay the bills
           </p>
         </div>
         <div className="flex justify-center w-full">
@@ -31,8 +31,8 @@ export default function Page() {
           <p>Total:</p>
           <p>Rp. 100.000</p>
         </div>
-        <button className="py-4 bg-primary w-full font-semibold text-white rounded-full">
-          Download QR
+        <button className="py-4 bg-zinc-100 w-full font-semibold  rounded-full text-primary">
+          Cancel Payment
         </button>
       </div>
     </div>
