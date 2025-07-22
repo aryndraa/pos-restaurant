@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import cooking from "@/public/cooking.svg";
 import StatusCard from "@/components/StatusCard";
+import ListProgress from "@/components/ListProgress";
 
 export type StatusType = {
   status: string;
@@ -22,8 +23,9 @@ export default function Page() {
       <div className="py-8">
         <Image src={cooking} alt="" className="w-full " />
       </div>
-      <div>
+      <div className="flex flex-col gap-2">
         <StatusCard time={status.time} title={status.title} />
+        <ListProgress />
       </div>
     </div>
   );
