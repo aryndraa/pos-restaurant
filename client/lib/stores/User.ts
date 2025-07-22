@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 export type User = {
   name: string;
+  count: number;
 };
 
 interface UserState {

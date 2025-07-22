@@ -1,14 +1,25 @@
 import React from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-export default function Counter() {
+type CounterProps = {
+  count: number;
+  setCount: (count: number) => void;
+};
+
+export default function Counter({ count = 0, setCount }: CounterProps) {
   return (
     <div className="flex gap-3 items-center">
-      <button className="p-2 border rounded-full text-sm">
+      <button
+        onClick={() => setCount(Math.max(1, count - 1))}
+        className="p-2 border rounded-full text-sm"
+      >
         <FaMinus />
       </button>
-      <span className="text-lg font-bold">1</span>
-      <button className="p-2 border rounded-full text-sm bg-black text-white">
+      <span className="text-lg font-bold">{count}</span>
+      <button
+        onClick={() => setCount(count + 1)}
+        className="p-2 border rounded-full text-sm bg-black text-white"
+      >
         <FaPlus />
       </button>
     </div>

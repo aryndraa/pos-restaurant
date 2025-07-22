@@ -1,13 +1,30 @@
 "use client";
 
 import Counter from "@/components/Counter";
+import { useUser } from "@/lib/stores/User";
 import logo from "@/public/logo.svg";
 import registSVG from "@/public/regist.svg";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Page() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const setUser = useUser((state) => state.setUser);
+  const router = useRouter();
+
+  const [count, setCount] = useState<number>(1);
+  const [name, setName] = useState<string>("");
+
+  const handleClick = () => {
+    if (name && count) {
+      setUser({ name, count });
+      router.replace("/");
+    } else if (!name) {
+      toast.error("please confirm your name");
+    }
+  };
 
   useEffect(() => {
     const handleFocus = () => {
@@ -40,7 +57,9 @@ export default function Page() {
             <input
               ref={inputRef}
               type="text"
+              required
               placeholder="Enter Your Name"
+              onChange={(e) => setName(e.target.value)}
               className="focus:outline-none p-4 border-b border-zinc-400 font-semibold w-full mb-2"
             />
             <p className="text-sm">
@@ -50,9 +69,12 @@ export default function Page() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-lg font-semibold">Person : </span>
-              <Counter />
+              <Counter count={count} setCount={setCount} />
             </div>
-            <button className="p-3 w-full bg-primary text-white font-bold rounded-full">
+            <button
+              onClick={handleClick}
+              className="p-3 w-full bg-primary text-white font-bold rounded-full"
+            >
               Continue
             </button>
           </div>
