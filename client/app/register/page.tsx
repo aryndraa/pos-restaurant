@@ -19,7 +19,7 @@ export default function Page() {
 
   const handleClick = () => {
     if (name && count) {
-      setUser({ name, count });
+      setUser({ name: name.trim(), count });
       router.replace("/");
     } else if (!name) {
       toast.error("please confirm your name");

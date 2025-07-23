@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 export type User = {
   name: string;
@@ -10,9 +11,16 @@ interface UserState {
   setUser: (user: User) => void;
 }
 
-export const useUser = create<UserState>()((set) => ({
-  user: null,
-  setUser(user) {
-    set({ user });
-  },
-}));
+export const useUser = create<UserState>()(
+  persist(
+    (set) => ({
+      user: null,
+      setUser: (user) => set({ user }),
+    }),
+    {
+      name: "user-session",
+      storage: createJSONStorage(() => sessionStorage),
+      partialize: (state) => ({ user: state.user }),
+    }
+  )
+);
