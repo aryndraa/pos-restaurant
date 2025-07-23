@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import MenuCard from "./MenuCard";
+import { Foods } from "@/dummy/Food";
 
 export default function Menus() {
   return (
@@ -12,10 +13,18 @@ export default function Menus() {
         </Link>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        <MenuCard />
-        <MenuCard />
-        <MenuCard />
-        <MenuCard />
+        {Foods.map((food, key) => (
+          <MenuCard
+            key={key}
+            id={food.id}
+            name={food.name}
+            description={food.description}
+            price={food.price}
+            categoryId={food.categoryId}
+            image={food.image}
+            rating={food.rating}
+          />
+        ))}
       </div>
     </div>
   );

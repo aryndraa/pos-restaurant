@@ -1,7 +1,8 @@
+import { Food } from "@/dummy/Food";
 import React from "react";
 import { FaPlus } from "react-icons/fa";
 
-export default function MenuCard() {
+export default function MenuCard({ id, name, description, price }: Food) {
   return (
     <div className="p-4 bg-white rounded-lg">
       <div className="mb-3">
@@ -12,12 +13,12 @@ export default function MenuCard() {
         />
       </div>
       <div>
-        <h3 className="font-semibold">Remake Ramen</h3>
-        <p className="text-xs font-medium text-zinc-400">
-          Easy Ramen with Noodles and Vegetables
-        </p>
+        <h3 className="font-semibold">{name}</h3>
+        <p className="text-xs font-medium text-zinc-400">{description}</p>
         <div className="mt-3 flex justify-between items-end">
-          <span className="font-semibold">Rp120.000</span>
+          <span className="font-semibold">
+            Rp. {price.toLocaleString("id-ID")}
+          </span>
           <button className="p-3 rounded-full bg-primary text-white">
             <FaPlus />
           </button>
