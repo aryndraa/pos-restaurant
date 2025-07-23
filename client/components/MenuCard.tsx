@@ -5,7 +5,16 @@ import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import AddCartModal from "./AddCartModal";
 
-export default function MenuCard({ id, name, description, price }: Food) {
+export default function MenuCard({
+  id,
+  name,
+  description,
+  price,
+  image,
+  rating,
+  categoryId,
+}: Food) {
+  const food = { id, name, image, description, price, rating, categoryId };
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
@@ -34,7 +43,11 @@ export default function MenuCard({ id, name, description, price }: Food) {
           </div>
         </div>
       </div>
-      <AddCartModal open={openModal} setOpen={() => setOpenModal(false)} />
+      <AddCartModal
+        open={openModal}
+        setOpen={() => setOpenModal(false)}
+        food={food}
+      />
     </>
   );
 }
