@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import UserGuard from "@/components/UserGuard";
 import { Slide, ToastContainer } from "react-toastify";
+import { FoodCategoryProvider } from "@/lib/contexts/FoodCategoryContext";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -29,7 +30,9 @@ export default function RootLayout({
             autoClose={5000}
             className="pt-4 px-4"
           />
-          <UserGuard>{children}</UserGuard>
+          <UserGuard>
+            <FoodCategoryProvider>{children}</FoodCategoryProvider>
+          </UserGuard>
         </main>
       </body>
     </html>
