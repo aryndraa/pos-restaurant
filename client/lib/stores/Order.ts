@@ -14,6 +14,7 @@ interface OrderState {
   orders: Order[];
   totalPrice: number;
   addOrder: (order: Order) => void;
+  updateOrderCount: (id: number, count: number) => void;
 }
 
 export const useOrder = create<OrderState>()(
@@ -28,6 +29,23 @@ export const useOrder = create<OrderState>()(
           (total, o) => total + o.price,
           0
         );
+        set({ orders: updatedOrders, totalPrice });
+      },
+      updateOrderCount: (id, newCount) => {
+        const updatedOrders = get().orders.map((order) =>
+          order.id === id
+            ? {
+                ...order,
+                count: newCount,
+                price: (order.price / order.count) * newCount,
+              }
+            : order
+        );
+        const totalPrice = updatedOrders.reduce(
+          (total, o) => total + o.price,
+          0
+        );
+
         set({ orders: updatedOrders, totalPrice });
       },
     }),
