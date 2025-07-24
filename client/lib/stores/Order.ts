@@ -12,6 +12,7 @@ export type Order = {
 
 interface OrderState {
   orders: Order[];
+  totalPrice: number;
   addOrder: (order: Order) => void;
 }
 
@@ -19,9 +20,15 @@ export const useOrder = create<OrderState>()(
   persist(
     (set, get) => ({
       orders: [],
+      totalPrice: 0,
       addOrder: (order) => {
         const currentOrders = get().orders ?? [];
-        set({ orders: [...currentOrders, order] });
+        const updatedOrders = [...currentOrders, order];
+        const totalPrice = updatedOrders.reduce(
+          (total, o) => total + o.price,
+          0
+        );
+        set({ orders: updatedOrders, totalPrice });
       },
     }),
     {

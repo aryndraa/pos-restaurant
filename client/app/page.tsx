@@ -1,3 +1,4 @@
+import CartButton from "@/components/CartButton";
 import CategoryFilter from "@/components/CategoryFilter";
 import HeroWidget from "@/components/HeroWidget";
 import Menus from "@/components/Menus";
@@ -14,6 +15,7 @@ export default function Home() {
       <section>
         <Menus />
       </section>
+      <CartButton />
     </>
   );
 }
