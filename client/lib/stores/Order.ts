@@ -3,7 +3,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 export type Order = {
   id: number;
-  image: number;
+  image: string;
   name: string;
   description: string;
   price: number;
@@ -11,20 +11,23 @@ export type Order = {
 };
 
 interface OrderState {
-  order: Order | null;
-  setOrder: (order: Order) => void;
+  orders: Order[];
+  addOrder: (order: Order) => void;
 }
 
 export const useOrder = create<OrderState>()(
   persist(
-    (set) => ({
-      order: null,
-      setOrder: (order) => set({ order }),
+    (set, get) => ({
+      orders: [],
+      addOrder: (order) => {
+        const currentOrders = get().orders ?? [];
+        set({ orders: [...currentOrders, order] });
+      },
     }),
     {
-      name: "food-sessiom",
+      name: "food-session",
       storage: createJSONStorage(() => sessionStorage),
-      partialize: (state) => ({ order: state.order }),
+      partialize: (state) => ({ orders: state.orders }),
     }
   )
 );

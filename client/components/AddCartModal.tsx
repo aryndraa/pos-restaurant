@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Counter from "./Counter";
 import { Food } from "@/dummy/Food";
+import { Order, useOrder } from "@/lib/stores/Order";
 
 type AddCartModalType = {
   open: boolean;
@@ -18,6 +19,25 @@ export default function AddCartModal({
 }: AddCartModalType) {
   const [count, setCount] = useState(0);
   const modalRef = useRef<HTMLDivElement>(null);
+  const totalPrice = count * food.price;
+  const setOrder = useOrder((state) => state.addOrder);
+
+  const handleSubmit = () => {
+    if (count === 0) return;
+
+    const newOrder: Order = {
+      id: food.id,
+      image: food.image,
+      description: food.description,
+      name: food.name,
+      count,
+      price: totalPrice,
+    };
+
+    setOrder(newOrder);
+    setOpen(false);
+    setCount(0);
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -93,7 +113,13 @@ export default function AddCartModal({
 
           <p className="text-sm mb-6">{food?.description}</p>
 
-          <button className="p-3 bg-primary text-white font-bold w-full rounded-full">
+          <button
+            onClick={handleSubmit}
+            disabled={count === 0}
+            className={`p-3  text-white font-bold w-full rounded-full ${
+              count === 0 ? "bg-zinc-400" : "bg-primary"
+            }`}
+          >
             Continue{" "}
             {count > 0 && " - " + (food?.price * count).toLocaleString("id-ID")}
           </button>
