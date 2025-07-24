@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import SearchLabel from "./SearchLabel";
 import { useUser } from "@/lib/stores/User";
 
 export default function HeroWidget() {

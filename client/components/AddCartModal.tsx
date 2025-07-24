@@ -94,7 +94,8 @@ export default function AddCartModal({
           <p className="text-sm mb-6">{food?.description}</p>
 
           <button className="p-3 bg-primary text-white font-bold w-full rounded-full">
-            Add to cart
+            Continue{" "}
+            {count > 0 && " - " + (food?.price * count).toLocaleString("id-ID")}
           </button>
         </div>
       </div>

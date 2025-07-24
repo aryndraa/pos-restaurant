@@ -10,7 +10,7 @@ export default function Counter({ count = 0, setCount }: CounterProps) {
   return (
     <div className="flex gap-3 items-center">
       <button
-        onClick={() => setCount(Math.max(1, count - 1))}
+        onClick={() => setCount(Math.max(0, count - 1))}
         className="p-2 border rounded-full text-sm"
       >
         <FaMinus />
