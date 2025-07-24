@@ -13,7 +13,7 @@ export default function Menus() {
         </Link>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        {Foods.map((food, key) => (
+        {Foods.slice(0, 4).map((food, key) => (
           <MenuCard
             key={key}
             id={food.id}

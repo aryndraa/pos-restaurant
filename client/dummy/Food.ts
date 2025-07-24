@@ -134,7 +134,7 @@ export const Foods: Food[] = [
     description: "Fruit Salad is a delicious item from the Salad category.",
     categoryId: 4,
     image:
-      "hhttps://images.unsplash.com/photo-1641642400143-6be68f1a0918?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1641642400143-6be68f1a0918?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     rating: 4.4,
     price: 38700,
   },
@@ -151,10 +151,10 @@ export const Foods: Food[] = [
   {
     id: 14,
     name: "Miso Ramen",
-    description:
-      "https://images.unsplash.com/photo-1637024696628-02cb19cc1829?q=80&w=1817&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Miso Ramen is a delicious item from the Ramen category.",
     categoryId: 5,
-    image: "https://source.unsplash.com/600x400/?Miso%20Ramen",
+    image:
+      "https://images.unsplash.com/photo-1637024696628-02cb19cc1829?q=80&w=1817&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     rating: 5.0,
     price: 35796,
   },
