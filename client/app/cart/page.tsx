@@ -1,5 +1,6 @@
 import CartItems from "@/components/CartItems";
 import PageTitle from "@/components/PageTitle";
+import PaymentButton from "@/components/PaymentButton";
 import PaymentDetail from "@/components/PaymentDetail";
 import React from "react";
 
@@ -9,6 +10,7 @@ export default function Page() {
       <PageTitle content="Review Your Order" />
       <CartItems />
       <PaymentDetail />
+      <PaymentButton />
     </div>
   );
 }

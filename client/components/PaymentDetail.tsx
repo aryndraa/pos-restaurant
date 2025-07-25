@@ -9,7 +9,7 @@ export default function PaymentDetail() {
   const tax = useOrder((state) => state.tax);
 
   return (
-    <div className="py-8 px-4 bg-white rounded-xl">
+    <div className="py-8 px-4 bg-white rounded-xl mb-32">
       <div className="text-center border-b pb-6 mb-6 border-zinc-300">
         <p className="text-xl font-medium mb-2">Grand total</p>
         <h2 className="text-4xl font-bold">
