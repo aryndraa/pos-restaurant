@@ -25,12 +25,33 @@ export const useOrder = create<OrderState>()(
       orders: [],
       totalPrice: 0,
       tax: 0,
-      addOrder: (order) => {
+      addOrder: (newOrder) => {
         const currentOrders = get().orders ?? [];
-        const updatedOrders = [...currentOrders, order];
+
+        const existingOrder = currentOrders.find((o) => o.id === newOrder.id);
+
+        let updatedOrders;
+
+        if (existingOrder) {
+          updatedOrders = currentOrders.map((order) =>
+            order.id === newOrder.id
+              ? {
+                  ...order,
+                  count: order.count + newOrder.count,
+                  price:
+                    (order.price / order.count) *
+                    (order.count + newOrder.count),
+                }
+              : order
+          );
+        } else {
+          updatedOrders = [...currentOrders, newOrder];
+        }
+
         const subtotal = updatedOrders.reduce((total, o) => total + o.price, 0);
         const tax = subtotal * 0.1;
         const totalPrice = subtotal + tax;
+
         set({ orders: updatedOrders, tax, totalPrice });
       },
       updateOrderCount: (id, newCount) => {
