@@ -6,6 +6,7 @@ import React from "react";
 export default function PaymentDetail() {
   const orders = useOrder((state) => state.orders);
   const totalPrice = useOrder((state) => state.totalPrice);
+  const tax = useOrder((state) => state.tax);
 
   return (
     <div className="py-8 px-4 bg-white rounded-xl">
@@ -26,8 +27,8 @@ export default function PaymentDetail() {
         ))}
 
         <div className="flex justify-between items-center text-zinc-400">
-          <h3 className="font-semibold">Tax & Fee</h3>
-          <p>Rp.100.000</p>
+          <h3 className="font-semibold">Tax & Fee 10%</h3>
+          <p>Rp.{tax.toLocaleString("id-ID")}</p>
         </div>
       </div>
       <div className="flex justify-between items-center">

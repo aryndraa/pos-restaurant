@@ -13,6 +13,7 @@ export type Order = {
 interface OrderState {
   orders: Order[];
   totalPrice: number;
+  tax: number;
   addOrder: (order: Order) => void;
   updateOrderCount: (id: number, count: number) => void;
   removeOrder: (id: number) => void;
@@ -23,20 +24,21 @@ export const useOrder = create<OrderState>()(
     (set, get) => ({
       orders: [],
       totalPrice: 0,
+      tax: 0,
       addOrder: (order) => {
         const currentOrders = get().orders ?? [];
         const updatedOrders = [...currentOrders, order];
-        const totalPrice = updatedOrders.reduce(
-          (total, o) => total + o.price,
-          0
-        );
-        set({ orders: updatedOrders, totalPrice });
+        const subtotal = updatedOrders.reduce((total, o) => total + o.price, 0);
+        const tax = subtotal * 0.1;
+        const totalPrice = subtotal + tax;
+        set({ orders: updatedOrders, tax, totalPrice });
       },
       updateOrderCount: (id, newCount) => {
         if (newCount <= 0) {
           get().removeOrder(id);
           return;
         }
+
         const updatedOrders = get().orders.map((order) =>
           order.id === id
             ? {
@@ -46,20 +48,20 @@ export const useOrder = create<OrderState>()(
               }
             : order
         );
-        const totalPrice = updatedOrders.reduce(
-          (total, o) => total + o.price,
-          0
-        );
 
-        set({ orders: updatedOrders, totalPrice });
+        const subtotal = updatedOrders.reduce((total, o) => total + o.price, 0);
+        const tax = subtotal * 0.1;
+        const totalPrice = subtotal + tax;
+
+        set({ orders: updatedOrders, tax, totalPrice });
       },
       removeOrder: (id) => {
         const updatedOrders = get().orders.filter((order) => order.id !== id);
-        const totalPrice = updatedOrders.reduce(
-          (total, o) => total + o.price,
-          0
-        );
-        set({ orders: updatedOrders, totalPrice });
+        const subtotal = updatedOrders.reduce((total, o) => total + o.price, 0);
+        const tax = subtotal * 0.1;
+        const totalPrice = subtotal + tax;
+
+        set({ orders: updatedOrders, tax, totalPrice });
       },
     }),
     {
@@ -68,6 +70,7 @@ export const useOrder = create<OrderState>()(
       partialize: (state) => ({
         orders: state.orders,
         totalPrice: state.totalPrice,
+        tax: state.tax,
       }),
     }
   )
