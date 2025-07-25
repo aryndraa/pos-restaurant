@@ -15,6 +15,7 @@ interface OrderState {
   totalPrice: number;
   addOrder: (order: Order) => void;
   updateOrderCount: (id: number, count: number) => void;
+  removeOrder: (id: number) => void;
 }
 
 export const useOrder = create<OrderState>()(
@@ -32,6 +33,10 @@ export const useOrder = create<OrderState>()(
         set({ orders: updatedOrders, totalPrice });
       },
       updateOrderCount: (id, newCount) => {
+        if (newCount <= 0) {
+          get().removeOrder(id);
+          return;
+        }
         const updatedOrders = get().orders.map((order) =>
           order.id === id
             ? {
@@ -48,11 +53,22 @@ export const useOrder = create<OrderState>()(
 
         set({ orders: updatedOrders, totalPrice });
       },
+      removeOrder: (id) => {
+        const updatedOrders = get().orders.filter((order) => order.id !== id);
+        const totalPrice = updatedOrders.reduce(
+          (total, o) => total + o.price,
+          0
+        );
+        set({ orders: updatedOrders, totalPrice });
+      },
     }),
     {
       name: "food-session",
       storage: createJSONStorage(() => sessionStorage),
-      partialize: (state) => ({ orders: state.orders }),
+      partialize: (state) => ({
+        orders: state.orders,
+        totalPrice: state.totalPrice,
+      }),
     }
   )
 );

@@ -18,9 +18,7 @@ export default function CartItemCard({
   };
 
   const handleDecrease = () => {
-    if (count > 1) {
-      updateOrderCount(id, count - 1);
-    }
+    updateOrderCount(id, count - 1);
   };
 
   return (
