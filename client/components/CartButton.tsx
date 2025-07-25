@@ -7,6 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 export default function CartButton() {
   const orders = useOrder((state) => state.orders);
+  const totalItems = orders.reduce((total, order) => total + order.count, 0);
   const totalPrice = useOrder((state) => state.totalPrice);
 
   if (orders.length === 0) {
@@ -16,7 +17,7 @@ export default function CartButton() {
   return (
     <div className="px-4 py-6 fixed bottom-0 right-0 left-0 bg-white">
       <div className="flex justify-between font-semibold mb-3">
-        <p>{orders.length} Items in cart</p>
+        <p>{totalItems} Items in cart</p>
         <p>Rp. {totalPrice.toLocaleString("id-ID")}</p>
       </div>
       <Link
