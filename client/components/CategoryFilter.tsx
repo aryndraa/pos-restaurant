@@ -14,7 +14,7 @@ export default function CategoryFilter() {
   const router = useRouter();
 
   return (
-    <div className="py-6 pb-4 px-4 bg-white rounded-lg overflow-x-hidden">
+    <div className="py-6 pb-4 px-4 md:px-8 md:py-10 bg-white rounded-lg overflow-x-hidden transition-all">
       <Swiper
         spaceBetween={10}
         slidesPerView={"auto"}

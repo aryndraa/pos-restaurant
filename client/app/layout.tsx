@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.variable} antialiased bg-background`}>
-        <main className="m-4 my-6 max-w-[420px] mb-36">
+        <main className="m-4 my-6 max-w-[420px] md:max-w-screen-md lg:max-w-screen-lg mx-auto mb-36 transition-all duration-300">
           <ToastContainer
             position="top-center"
             transition={Slide}

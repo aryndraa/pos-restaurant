@@ -45,35 +45,37 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
-      <Image src={registSVG} alt="" />
-      <div className="bg-white py-6 px-4 flex flex-col items-center rounded-xl">
-        <div className="flex flex-col items-center mb-8">
+    <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 min-h-[70vh]">
+      <div className="flex-1">
+        <Image src={registSVG} alt="" className="w-full h-auto" />
+      </div>
+      <div className="flex-1 bg-white py-8 px-6 flex flex-col items-center rounded-xl shadow-sm border border-zinc-100">
+        <div className="flex flex-col items-center mb-8 w-full">
           <Image src={logo} alt="" className="mb-4" />
-          <h1 className="text-2xl font-bold">Welcom to Kedai Jawa</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-center">Welcome to Kedai Jawa</h1>
         </div>
-        <div>
-          <div className="w-full mb-6">
+        <div className="w-full max-w-md">
+          <div className="w-full mb-8">
             <input
               ref={inputRef}
               type="text"
               required
               placeholder="Enter Your Name"
               onChange={(e) => setName(e.target.value)}
-              className="focus:outline-none p-4 border-b border-zinc-400 font-semibold w-full mb-2"
+              className="focus:ring-2 focus:ring-primary/20 p-4 border-b-2 border-zinc-200 focus:border-primary font-semibold w-full mb-3 transition-all outline-none"
             />
-            <p className="text-sm">
+            <p className="text-sm text-zinc-500">
               *your name will be used for improving service experience
             </p>
           </div>
-          <div>
-            <div className="flex items-center justify-between mb-4">
+          <div className="w-full">
+            <div className="flex items-center justify-between mb-8 p-4 bg-zinc-50 rounded-lg">
               <span className="text-lg font-semibold">Person : </span>
               <Counter count={count} setCount={setCount} />
             </div>
             <button
               onClick={handleClick}
-              className="p-3 w-full bg-primary text-white font-bold rounded-full"
+              className="p-4 w-full bg-primary hover:bg-primary/90 text-white font-bold rounded-full transition-all shadow-md active:scale-[0.98]"
             >
               Continue
             </button>

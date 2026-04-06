@@ -57,7 +57,7 @@ export default function AddCartModal({
 
   return (
     <div
-      className={`fixed inset-0 z-40 flex justify-center items-end transition duration-300 ease-in-out ${
+      className={`fixed inset-0 z-40 flex justify-center items-end md:items-center transition duration-300 ease-in-out px-4 ${
         open ? "visible" : "invisible"
       }`}
     >
@@ -71,8 +71,8 @@ export default function AddCartModal({
       {/* Modal */}
       <div
         ref={modalRef}
-        className={`relative z-50 p-4 py-6 bg-white w-full max-h-[90vh] overflow-y-auto rounded-t-2xl transition-transform duration-300 ${
-          open ? "translate-y-0" : "translate-y-full"
+        className={`relative z-50 p-6 bg-white w-full max-w-[500px] max-h-[90vh] overflow-y-auto rounded-t-2xl md:rounded-2xl transition-all duration-300 ${
+          open ? "translate-y-0 opacity-100 scale-100" : "translate-y-full md:translate-y-4 opacity-0 scale-95"
         }`}
       >
         <div className="grid grid-cols-4 items-center mb-6">

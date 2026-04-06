@@ -12,7 +12,7 @@ export default function PaymentButton() {
 
   return (
     <>
-      <div className="fixed z-10 bottom-0 left-0 right-0 m-4 my-2">
+      <div className="fixed z-10 bottom-0 left-0 right-0 m-4 my-2 max-w-[420px] md:max-w-screen-md lg:max-w-screen-lg mx-auto">
         <div className="p-4 py-3 bg-white shadow rounded-xl flex flex-col relative">
           <div className="mb-3">
             {modal && (

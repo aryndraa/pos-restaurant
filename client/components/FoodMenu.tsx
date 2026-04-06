@@ -14,7 +14,7 @@ export default function FoodMenu() {
       : Foods.filter((food) => food.categoryId === selectedCategoryId);
 
   return (
-    <div className="grid grid-cols-2 gap-2 ">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 ">
       {filteredFoods.map((food, key) => (
         <MenuCard
           key={key}

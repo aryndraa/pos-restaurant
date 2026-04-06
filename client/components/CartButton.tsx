@@ -15,7 +15,7 @@ export default function CartButton() {
   }
 
   return (
-    <div className="px-4 py-6 fixed bottom-0 right-0 left-0 bg-white">
+    <div className="px-4 py-6 fixed bottom-0 right-0 left-0 bg-white max-w-[420px] md:max-w-screen-md lg:max-w-screen-lg mx-auto w-full z-50">
       <div className="flex justify-between font-semibold mb-3">
         <p>{totalItems} Items in cart</p>
         <p>Rp. {totalPrice.toLocaleString("id-ID")}</p>
